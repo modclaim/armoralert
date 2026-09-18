@@ -20,11 +20,11 @@ public class ArmorAlertConfig {
     public boolean showDurabilityBar = true;
     public float animationSpeed = 1.0f;
     
-    public SlotConfig helmet = new SlotConfig(-82, -2, true);
-    public SlotConfig chestplate = new SlotConfig(-62, -2, true);
-    public SlotConfig leggings = new SlotConfig(-42, -2, true);
-    public SlotConfig boots = new SlotConfig(-22, -2, true);
-    public SlotConfig offhand = new SlotConfig(22, -2, true);
+    public SlotConfig helmet = new SlotConfig(-179, 0, true);
+    public SlotConfig chestplate = new SlotConfig(-159, 0, true);
+    public SlotConfig leggings = new SlotConfig(-139, 0, true);
+    public SlotConfig boots = new SlotConfig(-119, 0, true);
+    public SlotConfig offhand = new SlotConfig(97, 0, true);
 
     public static class SlotConfig {
         public int offsetX;
@@ -49,7 +49,13 @@ public class ArmorAlertConfig {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
+        }
+        if (INSTANCE.helmet == null || INSTANCE.helmet.offsetX > -100) {
+            INSTANCE.helmet = new SlotConfig(-179, 0, true);
+            INSTANCE.chestplate = new SlotConfig(-159, 0, true);
+            INSTANCE.leggings = new SlotConfig(-139, 0, true);
+            INSTANCE.boots = new SlotConfig(-119, 0, true);
+            INSTANCE.offhand = new SlotConfig(97, 0, true);
             save();
         }
     }
