@@ -1,9 +1,13 @@
+<p align="center">
+  <img src="logo.png" alt="ArmorAlert Logo" width="160" />
+</p>
+
 # ArmorAlert
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-26.3-brightgreen.svg?style=for-the-badge)](https://www.minecraft.net/)
 [![Fabric Loader](https://img.shields.io/badge/Fabric%20Loader-0.19.5-dbd0b4.svg?style=for-the-badge&logo=fabric&logoColor=black)](https://fabricmc.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![GitHub](https://img.shields.io/badge/GitHub-armoralert-181717.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/shokirovmuhammaddiyor/armoralert)
+[![GitHub](https://img.shields.io/badge/GitHub-armoralert-181717.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/modclaim/armoralert)
 [![Modrinth](https://img.shields.io/badge/Modrinth-ArmorAlert-00AF5C.svg?style=for-the-badge&logo=modrinth&logoColor=white)](https://modrinth.com/mod/armoralert)
 
 **ArmorAlert** is a lightweight, fully client-side Fabric mod for Minecraft 26.3 that integrates an unobtrusive armor and offhand durability HUD directly adjacent to the vanilla hotbar. Never lose critical gear to unexpected breakage again.

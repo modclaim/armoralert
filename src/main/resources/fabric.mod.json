@@ -6,13 +6,13 @@
   "description": "Real-time armor and offhand durability HUD with animated warnings. PvP-ready alerts for Minecraft Fabric.",
   "authors": [
     {
-      "name": "shokirovmuhammaddiyor"
+      "name": "modclaim"
     }
   ],
   "contact": {
-    "issues": "https://github.com/shokirovmuhammaddiyor/armoralert/issues",
-    "sources": "https://github.com/shokirovmuhammaddiyor/armoralert",
-    "homepage": "https://github.com/shokirovmuhammaddiyor/armoralert"
+    "issues": "https://github.com/modclaim/armoralert/issues",
+    "sources": "https://github.com/modclaim/armoralert",
+    "homepage": "https://github.com/modclaim/armoralert"
   },
   "license": "MIT",
   "icon": "assets/armoralert/icon.png",
