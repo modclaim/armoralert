@@ -60,7 +60,7 @@ Bar:   | [==== ] | [======]| [======]| [=    ] |   |                       |   |
 ### Steps
 
 1. Install [Fabric Loader](https://fabricmc.net/use/) for Minecraft 26.3.
-2. Download the latest `armoralert-1.0.0.jar` from [Releases](https://github.com/shokirovmuhammaddiyor/armoralert/releases) or [Modrinth](https://modrinth.com/mod/armoralert).
+2. Download the latest `armoralert-1.0.0.jar` from [Releases](https://github.com/modclaim/armoralert/releases) or [Modrinth](https://modrinth.com/mod/armoralert).
 3. Place the `.jar` file into your `.minecraft/mods` directory.
 4. Launch Minecraft using your Fabric profile.
 
@@ -115,16 +115,16 @@ Settings can be adjusted via the in-game GUI (press `K` or through ModMenu) or b
 
 Contributions, bug reports, and suggestions are welcome!
 
-1. Fork the repository at [github.com/shokirovmuhammaddiyor/armoralert](https://github.com/shokirovmuhammaddiyor/armoralert).
+1. Fork the repository at [github.com/modclaim/armoralert](https://github.com/modclaim/armoralert).
 2. Create your feature branch (`git checkout -b feature/amazing-feature`).
 3. Commit your changes (`git commit -m 'Add amazing feature'`).
 4. Push to the branch (`git push origin feature/amazing-feature`).
 5. Open a Pull Request.
 
-If you encounter issues, please submit an issue on the [GitHub Issue Tracker](https://github.com/shokirovmuhammaddiyor/armoralert/issues).
+If you encounter issues, please submit an issue on the [GitHub Issue Tracker](https://github.com/modclaim/armoralert/issues).
 
 ---
 
 ## License
 
-Distributed under the **MIT License**. See [LICENSE](https://github.com/shokirovmuhammaddiyor/armoralert/blob/main/LICENSE) for more information.
+Distributed under the **MIT License**. See [LICENSE](https://github.com/modclaim/armoralert/blob/main/LICENSE) for more information.

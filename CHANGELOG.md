@@ -21,3 +21,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Per-slot X and Y screen coordinate offsets for custom HUD positioning.
 - Optional ModMenu integration providing in-game configuration access through the Mods catalog.
 - Standalone client-side architecture compatible with singleplayer and multiplayer servers.
+
+[1.0.0]: https://github.com/modclaim/armoralert/releases/tag/v1.0.0
