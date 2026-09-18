@@ -1,0 +1,20 @@
+{
+  "armoralert.title": "ArmorAlert",
+  "armoralert.config.title": "ArmorAlert Settings",
+  "armoralert.config.enabled": "Enable HUD",
+  "armoralert.config.warning_threshold": "Warning Threshold (%)",
+  "armoralert.config.critical_threshold": "Critical Threshold (%)",
+  "armoralert.config.show_percentage": "Show Durability Percentage",
+  "armoralert.config.show_durability_bar": "Show Durability Bar",
+  "armoralert.config.animation_speed": "Animation Speed",
+  "armoralert.config.slots": "Slot Positions",
+  "armoralert.config.slot.helmet": "Helmet Slot",
+  "armoralert.config.slot.chestplate": "Chestplate Slot",
+  "armoralert.config.slot.leggings": "Leggings Slot",
+  "armoralert.config.slot.boots": "Boots Slot",
+  "armoralert.config.slot.offhand": "Offhand Slot",
+  "armoralert.config.slot.offset_x": "X Offset",
+  "armoralert.config.slot.offset_y": "Y Offset",
+  "armoralert.config.open_settings": "Open Settings",
+  "armoralert.config.reset": "Reset to Defaults"
+}

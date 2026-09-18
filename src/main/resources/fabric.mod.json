@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "armoralert",
+  "version": "${version}",
+  "name": "ArmorAlert",
+  "description": "Real-time armor and offhand durability HUD with animated warnings. PvP-ready alerts for Minecraft Fabric.",
+  "authors": [
+    {
+      "name": "shokirovmuhammaddiyor"
+    }
+  ],
+  "contact": {
+    "issues": "https://github.com/shokirovmuhammaddiyor/armoralert/issues",
+    "sources": "https://github.com/shokirovmuhammaddiyor/armoralert",
+    "homepage": "https://github.com/shokirovmuhammaddiyor/armoralert"
+  },
+  "license": "MIT",
+  "icon": "assets/armoralert/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "dev.armoralert.ArmorAlert"
+    ],
+    "client": [
+      "dev.armoralert.ArmorAlertClient"
+    ],
+    "modmenu": [
+      "dev.armoralert.integration.ModMenuApiImpl"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": ">=26.3"
+  },
+  "suggests": {
+    "fabric": "*"
+  }
+}
