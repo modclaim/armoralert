@@ -1,28 +1,37 @@
 package dev.armoralert.hud;
 
 import dev.armoralert.config.ArmorAlertConfig;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.RenderTickCounter;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
 public class ArmorAlertHud {
     public static final ArmorAlertHud INSTANCE = new ArmorAlertHud();
 
-    public void render(DrawContext context, RenderTickCounter tickCounter) {
-        WarningAnimator.INSTANCE.tick(tickCounter.getLastFrameDuration());
-        MinecraftClient client = MinecraftClient.getInstance();
-        if (client.player == null || client.options.playerListKey.isPressed() || client.options.hudHidden || client.currentScreen != null) {
+    public void render(GuiGraphicsExtractor graphics, DeltaTracker deltaTracker) {
+        WarningAnimator.INSTANCE.tick(deltaTracker.getRealtimeDeltaTicks());
+        Minecraft client = Minecraft.getInstance();
+        if (client == null || client.player == null || client.font == null || client.options == null) {
+            return;
+        }
+        if (client.options.keyPlayerList.isDown()) {
+            return;
+        }
+        if (client.gui != null && client.gui.screen() != null) {
+            return;
+        }
+        if (client.gui != null && client.gui.hud != null && client.gui.hud.isHidden()) {
             return;
         }
         ArmorAlertConfig config = ArmorAlertConfig.get();
         if (!config.enabled) {
             return;
         }
-        PlayerEntity player = client.player;
-        int centerX = client.getWindow().getScaledWidth() / 2;
-        int bottomY = client.getWindow().getScaledHeight() - 16;
+        Player player = client.player;
+        int centerX = graphics.guiWidth() / 2;
+        int bottomY = graphics.guiHeight() - 16;
         for (SlotLayout slot : SlotLayout.values()) {
             ArmorAlertConfig.SlotConfig slotConfig = slot.getConfig();
             if (!slotConfig.visible) {
@@ -32,37 +41,37 @@ public class ArmorAlertHud {
             int slotY = bottomY + slotConfig.offsetY;
             ItemStack stack = slot.getStack(player);
             if (stack.isEmpty()) {
-                context.fill(slotX - 1, slotY - 1, slotX + 17, slotY + 17, 0x80000000);
+                graphics.fill(slotX - 1, slotY - 1, slotX + 17, slotY + 17, 0x80000000);
             } else {
-                context.drawItem(stack, slotX, slotY);
-                if (stack.isDamageable()) {
+                graphics.item(stack, slotX, slotY);
+                if (stack.isDamageableItem()) {
                     int maxDurability = stack.getMaxDamage();
-                    int currentDurability = maxDurability - stack.getDamage();
-                    float durabilityPercent = (float) currentDurability / maxDurability * 100;
+                    int currentDurability = maxDurability - stack.getDamageValue();
+                    float durabilityPercent = (float) currentDurability / maxDurability * 100f;
                     if (config.showDurabilityBar) {
                         int barColor = getBarColor(durabilityPercent);
-                        context.fill(slotX, slotY + 14, slotX + 16, slotY + 16, 0xFF000000);
+                        graphics.fill(slotX, slotY + 14, slotX + 16, slotY + 16, 0xFF000000);
                         int barWidth = (int) (16 * (durabilityPercent / 100f));
-                        context.fill(slotX, slotY + 14, slotX + barWidth, slotY + 15, barColor);
+                        graphics.fill(slotX, slotY + 14, slotX + barWidth, slotY + 15, barColor);
                     }
                     if (config.showPercentage) {
                         String text = String.format("%d%%", (int) durabilityPercent);
-                        context.getMatrices().push();
-                        context.getMatrices().translate(slotX, slotY + 18, 0);
-                        context.getMatrices().scale(0.5f, 0.5f, 1f);
-                        context.drawTextWithShadow(client.textRenderer, text, 0, 0, 0xFFFFFF);
-                        context.getMatrices().pop();
+                        graphics.pose().pushMatrix();
+                        graphics.pose().translate((float) slotX, (float) (slotY + 18));
+                        graphics.pose().scale(0.5f, 0.5f);
+                        graphics.text(client.font, text, 0, 0, 0xFFFFFF, true);
+                        graphics.pose().popMatrix();
                     }
                     String warningText = WarningAnimator.INSTANCE.getWarningText(durabilityPercent);
                     if (warningText != null) {
                         boolean isCritical = durabilityPercent <= config.criticalThreshold;
-                        float bounceY = WarningAnimator.INSTANCE.getBounceOffset(slot, isCritical, tickCounter.getLastFrameDuration());
-                        context.getMatrices().push();
-                        context.getMatrices().translate(slotX + 8, slotY - 10 + bounceY, 0);
-                        context.getMatrices().scale(0.8f, 0.8f, 1f);
-                        int textWidth = client.textRenderer.getWidth(warningText);
-                        context.drawTextWithShadow(client.textRenderer, warningText, -textWidth / 2, 0, 0xFFFFFF);
-                        context.getMatrices().pop();
+                        float bounceY = WarningAnimator.INSTANCE.getBounceOffset(slot, isCritical, deltaTracker.getRealtimeDeltaTicks());
+                        graphics.pose().pushMatrix();
+                        graphics.pose().translate((float) (slotX + 8), (float) (slotY - 10 + bounceY));
+                        graphics.pose().scale(0.8f, 0.8f);
+                        int textWidth = client.font.width(warningText);
+                        graphics.text(client.font, warningText, -textWidth / 2, 0, 0xFFFFFF, true);
+                        graphics.pose().popMatrix();
                     }
                 }
             }

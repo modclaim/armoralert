@@ -10,6 +10,6 @@ public class ArmorAlert implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("ArmorAlert initialized");
+        LOGGER.info("ArmorAlert initialized for Minecraft 26.3");
     }
 }

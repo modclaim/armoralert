@@ -1,31 +1,32 @@
 package dev.armoralert.hud;
 
 import dev.armoralert.config.ArmorAlertConfig;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
 public enum SlotLayout {
-    HELMET("Helmet", 3, false),
-    CHESTPLATE("Chestplate", 2, false),
-    LEGGINGS("Leggings", 1, false),
-    BOOTS("Boots", 0, false),
-    OFFHAND("Offhand", -1, true);
+    HELMET("Helmet", EquipmentSlot.HEAD, false),
+    CHESTPLATE("Chestplate", EquipmentSlot.CHEST, false),
+    LEGGINGS("Leggings", EquipmentSlot.LEGS, false),
+    BOOTS("Boots", EquipmentSlot.FEET, false),
+    OFFHAND("Offhand", EquipmentSlot.OFFHAND, true);
 
     public final String translationKey;
-    public final int armorIndex;
+    public final EquipmentSlot slot;
     public final boolean isOffhand;
 
-    SlotLayout(String translationKey, int armorIndex, boolean isOffhand) {
+    SlotLayout(String translationKey, EquipmentSlot slot, boolean isOffhand) {
         this.translationKey = translationKey;
-        this.armorIndex = armorIndex;
+        this.slot = slot;
         this.isOffhand = isOffhand;
     }
 
-    public ItemStack getStack(PlayerEntity player) {
+    public ItemStack getStack(Player player) {
         if (isOffhand) {
-            return player.getOffHandStack();
+            return player.getOffhandItem();
         }
-        return player.getInventory().armor.get(armorIndex);
+        return player.getItemBySlot(slot);
     }
 
     public ArmorAlertConfig.SlotConfig getConfig() {
